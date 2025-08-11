@@ -1,8 +1,7 @@
-import SocketWrapper from './SocketWrapper';
-import {ThemeProvider} from '@mui/material/styles';
-import theme from './theme';
-import StreamingInterface from './StreamingInterface';
-import CssBaseline from '@mui/material/CssBaseline';
+// SocketWrapper is not needed when using the SDK's own connection
+// import SocketWrapper from './SocketWrapper';
+import './global.css'
+import DaisyLikeInterface from './DaisyLikeInterface';
 import {createContext, useCallback, useState} from 'react';
 import packageJson from '../package.json';
 
@@ -21,14 +20,7 @@ export const AppResetKeyContext = createContext<(newKey: string) => void>(
 );
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <SocketWrapper>
-        <StreamingInterface />
-      </SocketWrapper>
-    </ThemeProvider>
-  );
+  return <DaisyLikeInterface />
 }
 
 function AppWrapper() {
