@@ -99,6 +99,19 @@ app_routes = [
     ),  # Serve static files from root
 ]
 app = Starlette(debug=True, routes=app_routes)
+from starlette.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",             # for your Next.js dev site
+        "https://your-frontend.vercel.app"   # replace this with your Vercel URL after deploying
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # rooms is indexed by room_id
 rooms: Dict[str, Room] = {}
